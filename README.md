@@ -1,39 +1,72 @@
-<!-- 
+<!--
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
 
 For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
 For general information about developing packages, see the Dart guide for
 [creating packages](https://dart.dev/guides/libraries/create-library-packages)
 and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
+[developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Inspired by [[https://pub.dev/packages/aspen][aspen]] but specified for using npm modules in
+[[https://pub.dev/packages/flutter_js][flutter_js]].
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Creates a .dart file containing constants that included javascript code read from specified files
+  by using `@TextAsset` annotation.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```
+flutter pub add -d build_runner
+flutter pub add -d flutter_js_asset
+```
+
+To build, type
+
+```
+flutter pub run build_runner build
+```
+To test, type
+
+```
+flutter pub run build_runner test
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+1. Create a npm module in `web` folder or any other folders are whitelisted because by default
+`package:build` only allows you to use assets from a pre-defined whitelist of directories.
 
-```dart
-const like = 'sample';
+2. Installs packages you'd like to use and
+3. Create a `index.js` and exports modules to global object like this:
+
+```javascript
+module.exports.lib = require('name/of/module');
 ```
 
-## Additional information
+4. Generates a `bundle.js` by using webpack.
+5. Creates a dart file like this:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+library example;
+
+import 'package:flutter_js_asset/annotations.dart';
+
+part 'example.g.dart';
+
+@TextAsset('asset:example/web/dist/bundle.js')
+const String jsCode = $jsCodeContent;
+```
+
+6. Generates $jsCodeContent by typing:
+
+```sh
+flutter pub run build_runner build
+```
+
+see `example` for more details.

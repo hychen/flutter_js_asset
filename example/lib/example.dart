@@ -1,7 +1,8 @@
 library example;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+import 'package:flutter_js_asset/annotations.dart';
+
+part 'example.g.dart';
+
+@TextAsset('asset:example/web/dist/bundle.js')
+const String jsCode = $jsCodeContent;
