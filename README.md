@@ -11,8 +11,8 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-Inspired by [[https://pub.dev/packages/aspen][aspen]] but specified for using npm modules in
-[[https://pub.dev/packages/flutter_js][flutter_js]].
+Inspired by [aspen](https://pub.dev/packages/aspen) but specified for using npm modules in
+[flutter_js](https://pub.dev/packages/flutter_js)
 
 ## Features
 
