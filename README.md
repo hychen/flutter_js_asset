@@ -23,7 +23,7 @@ Inspired by [aspen](https://pub.dev/packages/aspen) but specified for using npm 
 
 ```
 flutter pub add -d build_runner
-flutter pub add -d flutter_js_asset
+flutter pub add flutter_js_asset
 ```
 
 To build, type
