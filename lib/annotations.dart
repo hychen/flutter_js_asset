@@ -1,3 +1,5 @@
+library annotations;
+
 class TextAsset {
   final String path;
 
