@@ -1,7 +1,9 @@
 name: flutter_js_asset
-description: A new Flutter package project.
+description: >
+  Creates a .dart file containing constants that included javascript code read from
+  specified files by using @TextAsset annotation.
 version: 0.0.1
-homepage:
+homepage: https://github.com/hychen/flutter_js_asset
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
